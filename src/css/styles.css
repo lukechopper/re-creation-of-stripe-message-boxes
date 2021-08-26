@@ -1,3 +1,100 @@
+
 body{
-    background-color: darkgray;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.main-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.main-container__section{
+    width: 33.33333%;
+    position: relative;
+    padding: 60px 50px 10px 10px;
+    margin: 40px 0;
+}
+
+@media(max-width: 879px){
+    .main-container__section{
+        width: 50%;
+    }
+}
+
+@media(max-width: 679px){
+    .main-container__section{
+        width: 100%;
+    }
+}
+
+.main-container__icon{
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.main-container__header{
+    margin-bottom: 1.7rem;
+}
+
+.main-container__list{
+    list-style: none;
+}
+
+.main-container__list-item{
+    color: #6b7c93;
+    margin: 0.9rem 0;
+    position: relative;
+}
+
+.main-container__list-item:hover{
+    color: #6772e5;
+}
+
+.main-container__list-item::before{
+    content: "";
+    background: url("https://stripe.com/img/v3/pricing/spec-check.svg");
+    display: inline-block;
+    width: 11px;
+    height: 10px;
+    margin-right: 0.9rem;
+}
+
+.main-container__popover{
+    position: absolute;
+    line-height: 20px;
+    left: -19px;
+    top: -75px;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    padding: 15px 20px;
+    box-shadow:  0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3),0 -6px 16px -6px rgba(0,0,0,.025);
+    transition: all 0.15s ease-in-out;
+    opacity: 0;
+    transform: scale(0.5);
+    transform-origin: 8px 100%;
+}
+
+
+.main-container__popover::before{
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: -8px;
+    border-top: 8px solid white;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
 }
