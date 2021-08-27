@@ -59,7 +59,7 @@ body{
     position: relative;
 }
 
-.main-container__list-item:hover{
+.main-container__list-item--selected{
     color: #6772e5;
 }
 

@@ -28,6 +28,7 @@ let containerSelected = false;
 let selectingNewItem = false;
 
 function resetEverything(){
+    listItem.classList.remove('main-container__list-item--selected');
     mainContainerSection = null, listItem = null, popover = null;
     mousePos = {x: null, y: null};
     offsetPos = {x: null, width: null, y: null, height: null};
@@ -45,6 +46,7 @@ allRowText.forEach(text => {
     text.addEventListener('mouseover', e => {
         if(containerSelected || window.innerWidth < 680) return;
         listItem = e.target;
+        listItem.classList.add('main-container__list-item--selected');
         setGlobals();
         if(!popover) return;
         popover.style.display = 'block'; 
@@ -68,7 +70,9 @@ function selectAdjacentListItem(direction){
             resetEverything();
             return;
         }
+        listItem.classList.remove('main-container__list-item--selected');
         listItem = listItem.previousElementSibling;
+        listItem.classList.add('main-container__list-item--selected');
         setGlobals();
         if(!popover) {
             resetEverything();
@@ -86,7 +90,9 @@ function selectAdjacentListItem(direction){
             resetEverything();
             return;
         }
+        listItem.classList.remove('main-container__list-item--selected');
         listItem = listItem.nextElementSibling;
+        listItem.classList.add('main-container__list-item--selected');
         setGlobals();
         if(!popover) {
             resetEverything();
@@ -104,11 +110,11 @@ function selectAdjacentListItem(direction){
 addEventListener('mousemove', e => {
     if(!popover || selectingNewItem) return;
     mousePos.x = e.clientX - mainContainerSection.offsetLeft, mousePos.y = e.clientY - (mainContainerSection.offsetTop - window.scrollY);
-    if(mousePos.y < offsetPos.y - 10 && mousePos.x > offsetPos.x && mousePos.x < offsetPos.width){
+    if(mousePos.y < offsetPos.y - 15 && mousePos.x > offsetPos.x && mousePos.x < offsetPos.width){
         selectAdjacentListItem('up');
         return;
     }
-    if(mousePos.y > offsetPos.height + 10 && mousePos.x > offsetPos.x && mousePos.x < offsetPos.width){
+    if(mousePos.y > offsetPos.height + 15 && mousePos.x > offsetPos.x && mousePos.x < offsetPos.width){
         selectAdjacentListItem('down');
         return;
     }
