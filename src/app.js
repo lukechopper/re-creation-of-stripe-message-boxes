@@ -60,7 +60,10 @@ allRowText.forEach(text => {
 function selectAdjacentListItem(direction){
     selectingNewItem = true;
     popover.style.opacity = '0', popover.style.transform = 'scale(0.5)'; let oldPopover = popover;
-    setTimeout(() => {oldPopover.style.display = 'none';}, 150);
+    setTimeout(() => {
+        if(popover === oldPopover) return;
+        oldPopover.style.display = 'none';
+    }, 150);
     if(direction === 'clear'){
         resetEverything();
         return;
