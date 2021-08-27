@@ -1,9 +1,9 @@
 import './css/global.css';
 import './css/styles.css';
 
-let allRowText = document.querySelectorAll('.main-container__list-item');
+let allRowText = document.querySelectorAll('.container--flex .container__list-item');
 //DOCUMENT LOAD
-let allPopovers = document.querySelectorAll('.main-container__popover');
+let allPopovers = document.querySelectorAll('.container--flex .container__popover');
 
 function setPopoverHeight(){
     allPopovers.forEach((popover, index) => {
@@ -28,7 +28,7 @@ let containerSelected = false;
 let selectingNewItem = false;
 
 function resetEverything(){
-    listItem.classList.remove('main-container__list-item--selected');
+    listItem.classList.remove('container__list-item--selected');
     mainContainerSection = null, listItem = null, popover = null;
     mousePos = {x: null, y: null};
     offsetPos = {x: null, width: null, y: null, height: null};
@@ -39,14 +39,14 @@ function resetEverything(){
 function setGlobals(){
     offsetPos.x = listItem.offsetLeft, offsetPos.y = listItem.offsetTop, offsetPos.width = listItem.offsetLeft + listItem.clientWidth, offsetPos.height = listItem.offsetTop + listItem.clientHeight;
     mainContainerSection = listItem.parentElement.parentElement;
-    popover = listItem.querySelector('.main-container__popover');
+    popover = listItem.querySelector('.container__popover');
 }
 
 allRowText.forEach(text => {
     text.addEventListener('mouseover', e => {
         if(containerSelected || window.innerWidth < 680) return;
         listItem = e.target;
-        listItem.classList.add('main-container__list-item--selected');
+        listItem.classList.add('container__list-item--selected');
         setGlobals();
         if(!popover) return;
         popover.style.display = 'block'; 
@@ -73,9 +73,9 @@ function selectAdjacentListItem(direction){
             resetEverything();
             return;
         }
-        listItem.classList.remove('main-container__list-item--selected');
+        listItem.classList.remove('container__list-item--selected');
         listItem = listItem.previousElementSibling;
-        listItem.classList.add('main-container__list-item--selected');
+        listItem.classList.add('container__list-item--selected');
         setGlobals();
         if(!popover) {
             resetEverything();
@@ -93,9 +93,9 @@ function selectAdjacentListItem(direction){
             resetEverything();
             return;
         }
-        listItem.classList.remove('main-container__list-item--selected');
+        listItem.classList.remove('container__list-item--selected');
         listItem = listItem.nextElementSibling;
-        listItem.classList.add('main-container__list-item--selected');
+        listItem.classList.add('container__list-item--selected');
         setGlobals();
         if(!popover) {
             resetEverything();
