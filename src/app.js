@@ -113,11 +113,11 @@ function selectAdjacentListItem(direction){
 addEventListener('mousemove', e => {
     if(!popover || selectingNewItem) return;
     mousePos.x = e.clientX - mainContainerSection.offsetLeft, mousePos.y = e.clientY - (mainContainerSection.offsetTop - window.scrollY);
-    if(mousePos.y < offsetPos.y - 15 && mousePos.x > offsetPos.x && mousePos.x < offsetPos.width){
+    if(mousePos.y < offsetPos.y - 10 && mousePos.x > offsetPos.x && mousePos.x < offsetPos.width){
         selectAdjacentListItem('up');
         return;
     }
-    if(mousePos.y > offsetPos.height + 15 && mousePos.x > offsetPos.x && mousePos.x < offsetPos.width){
+    if(mousePos.y > offsetPos.height + 10 && mousePos.x > offsetPos.x && mousePos.x < offsetPos.width){
         selectAdjacentListItem('down');
         return;
     }
